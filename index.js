@@ -50,16 +50,6 @@ async function run() {
 
       res.send(result);
     });
-    //patch
-    app.patch("/task/:id", async (req, res) => {
-      const id = req.params.id;
-      const updatedData = req.body;
-      const taskData = await taskCollection.updateOne(
-        { _id: new ObjectId(id) },
-        { $set: updatedData }
-      );
-      res.send(taskData);
-    });
     // delete
     app.delete("/task/:id", async (req, res) => {
       const id = req.params.id;
@@ -84,16 +74,6 @@ async function run() {
       const result = await ongoingData.toArray();
 
       res.send(result);
-    });
-    //patch
-    app.patch("/ongoing/:id", async (req, res) => {
-      const id = req.params.id;
-      const updatedData = req.body;
-      const ongoingData = await ongoingCollection.updateOne(
-        { _id: new ObjectId(id) },
-        { $set: updatedData }
-      );
-      res.send(ongoingData);
     });
     // delete
     app.delete("/ongoing/:id", async (req, res) => {
@@ -121,16 +101,6 @@ async function run() {
       const result = await completedData.toArray();
 
       res.send(result);
-    });
-    //patch
-    app.patch("/completed/:id", async (req, res) => {
-      const id = req.params.id;
-      const updatedData = req.body;
-      const completedData = await completedCollection.updateOne(
-        { _id: new ObjectId(id) },
-        { $set: updatedData }
-      );
-      res.send(completedData);
     });
     // delete
     app.delete("/completed/:id", async (req, res) => {
